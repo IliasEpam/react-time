@@ -1,0 +1,56 @@
+﻿.page {
+    padding-top: 50px;
+    &__navigation-top {
+        position: fixed;
+        z-index: 50;
+        width: 100%;
+        min-height: 50px;
+        top: 0;
+        left: 0;
+    }
+    &__scroll-up {
+        position: fixed;
+        display: none;
+        width: 60px;
+        height: 100vh;
+        z-index: 30;
+        &--visible {
+            display: inline-block;
+        }
+    }
+    &__main-banner {
+        position: relative;
+    }
+    &__categories {
+        width: 80%;
+        margin: auto;
+    }
+    &__partners {
+        width: 80%;
+        margin: auto;
+    }
+    &__payment {
+        width: 80%;
+        margin: auto;
+    }
+    &__contacts {
+        width: 80%;
+        margin: 30px auto;
+    }
+    &__cart {
+        width: 80%;
+        margin: auto;
+    }
+    &__bread-crumbs {
+        width: 80%;
+        margin: auto;
+    }
+    &__product {
+        width: 80%;
+        margin: auto;
+    }
+    &__goods {
+        width: 80%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,85 @@
+﻿.product {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+    padding: 30px 0;
+    &__slider {
+        flex-basis: 550px;
+    }
+    &__about {
+        flex-basis: calc(95% - 550px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__name {
+        font-size: 200%;
+        padding-bottom: 20px;
+        line-height: 1.1;
+    }
+    &__desc {
+        line-height: 1.2;
+    }
+    &__price {
+        font-size: 140%;
+        color: $color-action-grad;
+        padding: 10px 0;
+        text-align: right;
+    }
+    &__inputs {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__quantity {
+        align-self: center;
+    }
+    &__share {
+        height: 60px;
+        display: flex;
+    }
+    &__social-icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+        align-self: center;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: all .5s;
+        &--facebook {
+            background: url(img/icons/facebook.png);
+            background-size: 100% 100%;
+        }
+        &--twitter {
+            background: url(img/icons/twit.png);
+            background-size: 100% 100%;
+        }
+        &--google {
+            background: url(img/icons/google.png);
+            background-size: 100% 100%;
+        }
+        &--vk {
+            background: url(img/icons/vk.png);
+            background-size: 100% 100%;
+        }
+    }
+    &__social-icon:hover {
+        opacity: 1.0;
+    }
+    &__add-to-cart {
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action-grad 100%);
+        border: none;
+        border-radius: 20px;
+        color: white;
+        padding: 7px 15px;
+        cursor: pointer;
+        color: white;
+        transition: all .5s;
+        font-size: 110%;
+        align-self: center;
+    }
+    &__add-to-cart:hover {
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action 100%);
+    }
+}

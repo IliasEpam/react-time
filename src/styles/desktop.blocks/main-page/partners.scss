@@ -1,0 +1,14 @@
+﻿.partners {
+    position: relative;
+    &__content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        padding: 20px 0;
+        border-top: 1px solid $color-main;
+    }
+    &__logo {
+        width: 150px;
+        height: 150px;
+    }
+}

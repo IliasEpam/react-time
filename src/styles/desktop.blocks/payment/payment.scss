@@ -1,0 +1,91 @@
+﻿.payment {
+    position: relative;
+    &__header {
+        padding: 20px 0;
+        font-size: 200%;
+        flex-basis: 100%;
+        text-align: center;
+        line-height: 1.1;
+    }
+    &__form {
+        width: 520px;
+        height: 530px;
+        margin: 0px auto 0 auto;
+        position: relative;
+    }
+    &__cvv-wrapper {
+        width: 400px;
+        height: 300px;
+        position: absolute;
+        left: 120px;
+        background: url(img/card-back.jpg);
+        background-size: 100% 100%;
+        border-radius: 30px;
+    }
+    &__cvv {
+        position: absolute;
+        left: 300px;
+        top: 115px;
+        width: 60px;
+        height: 30px;
+    }
+    &__card-wrapper {
+        width: 400px;
+        height: 300px;
+        background: url(img/card-front.png);
+        background-size: 100% 100%;
+        position: absolute;
+        top: 120px;
+        border-radius: 30px;
+        z-index: 3;
+    }
+    &__number {
+        position: absolute;
+        left: 37px;
+        top: 164px;
+        height: 28px;
+        width: 320px;
+    }
+    &__month {
+        position: absolute;
+        left: 168px;
+        top: 213px;
+        height: 30px;
+        width: 28px;
+    }
+    &__year {
+        position: absolute;
+        left: 208px;
+        top: 213px;
+        height: 30px;
+        width: 50px;
+    }
+    &__holder {
+        position: absolute;
+        left: 35px;
+        top: 245px;
+        height: 32px;
+        width: 250px;
+    }
+    &__button-wrapper {
+        position: absolute;
+        top: 450px;
+        width: 100%;
+        text-align: center;
+    }
+    &__button {
+        font-size: 110%;
+        background: #c55f4b;
+        background-image: linear-gradient(to bottom, #c55f4b 0, #922b28 100%);
+        border-radius: 20px;
+        padding: 7px 50px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        -webkit-transition: all .5s;
+        transition: all .5s;
+    }
+    &__button:hover {
+        background-image: linear-gradient(to bottom, #c55f4b 0, #c55f4b 100%);
+    }
+}

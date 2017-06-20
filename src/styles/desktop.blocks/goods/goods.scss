@@ -1,0 +1,116 @@
+﻿.goods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    &__navigation-categories {
+        width: 18%;
+        padding-top: 20px;
+    }
+    &__header {
+        padding: 20px 0;
+        font-size: 300%;
+        flex-basis: 100%;
+        text-align: left;
+        line-height: 1.1;
+    }
+    &__content {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+        justify-content: space-between
+    }
+    &__good {
+        width: 200px;
+        padding-bottom: 20px;
+        vertical-align: top;
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 20px;
+        &--list {
+            width: 60%;
+            max-height: 240px;
+            font-size: 110%;
+            text-align: left;
+            justify-content: space-between;
+            margin: auto;
+        }
+        &--dummy {
+            padding: 0;
+        }
+    }
+    &__good-img {
+        width: 200px;
+        height: 160px;
+        transition: all 0.5s;
+        &--list {
+            width: 250px;
+            height: 200px;
+        }
+    }
+    &__good-info {
+        text-align: center;
+        line-height: 1.3;
+        vertical-align: top;
+        width: 100%;
+        &--list {
+            width: calc(95% - 250px);
+            height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+            flex-grow: 0;
+        }
+    }
+    &__good-description {
+        text-align: left;
+        flex-basis: 100%;
+        overflow: hidden;
+        transition: all .5s;
+        display: none;
+    }
+    &__good-description--visible {
+        display: block;
+    }
+    &__good-price {
+        text-align: left;
+        vertical-align: top;
+        text-align: center;
+        &--list {
+            display: inline-block;
+            width: 28%;
+            text-align: left;
+        }
+    }
+    &__good-name {
+        text-align: left;
+        vertical-align: top;
+        text-align: center;
+        &--list {
+            display: inline-block;
+            width: 70%;
+            text-align: left;
+        }
+    }
+    &__good-link {
+        text-decoration: none;
+    }
+    &__good-link:hover {
+        text-decoration: underline;
+    }
+    &__good-add-cart {
+        display: inline-block;
+        padding: 7px 15px;
+        border-radius: 20px;
+        transition: all .5s;
+        color: white;
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action-grad 100%);
+        border: 0px solid white;
+        cursor: pointer;
+    }
+    &__good-add-cart:hover {
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action 100%);
+    }
+}

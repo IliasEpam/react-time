@@ -1,0 +1,35 @@
+﻿.footer-main {
+    background: $color-main;
+    &__content {
+        width: 80%;
+        margin: auto;
+        position: relative;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__section-header {
+        font-size: 120%;
+        line-height: 2.3;
+    }
+    &__payment {
+        display: inline-block;
+        width: 300px;
+        height: 200px;
+        background: url("img/payment.png");
+        background-size: 100% 100%;
+    }
+    &__contacts {
+        line-height: 2;
+    }
+    &__link {
+        color: $color-action;
+        text-decoration: none;
+        transition: all .5s;
+        display: block;
+        line-height: 2;
+    }
+    &__link:hover {
+        color: $color-action-grad;
+    }
+}

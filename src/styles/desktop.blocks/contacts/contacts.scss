@@ -1,0 +1,42 @@
+﻿.contacts {
+    position: relative;
+    &__form {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: flex-start;
+    }
+    &__form-block {
+        width: 30%;
+        min-width: 250px;
+    }
+    &__block-header {
+        font-size: 200%;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    &__line {
+        padding-bottom: 20px;
+    }
+    &__input {
+        float: right;
+    }
+    &__button-wrapper {
+        width: 100%;
+        text-align: center;
+    }
+    &__button {
+        background: #c55f4b;
+        background-image: linear-gradient(to bottom, #c55f4b 0, #922b28 100%);
+        border-radius: 20px;
+        padding: 7px 15px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        transition: all .5s;
+    }
+    &__button:hover {
+        background-image: linear-gradient(to bottom, #c55f4b 0, #c55f4b 100%);
+    }
+}

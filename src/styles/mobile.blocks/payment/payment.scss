@@ -1,0 +1,71 @@
+﻿@media screen and (max-width: 760px) {
+    .payment {
+        &__header {
+            font-size: 200%;
+        }
+        &__form {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            padding-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__cvv-wrapper {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-bottom: 10px;
+        }
+        &__cvv {
+            position: absolute;
+            left: 220px;
+            top: 75px;
+            width: 50px;
+            height: 25px;
+        }
+        &__card-wrapper {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-bottom: 10px;
+        }
+        &__number {
+            position: absolute;
+            left: 26px;
+            top: 109px;
+            height: 20px;
+            width: 240px;
+        }
+        &__month {
+            position: absolute;
+            left: 123px;
+            top: 142px;
+            height: 20px;
+            width: 25px;
+        }
+        &__year {
+            position: absolute;
+            left: 156px;
+            top: 142px;
+            height: 20px;
+            width: 45px;
+        }
+        &__holder {
+            position: absolute;
+            left: 25px;
+            top: 164px;
+            height: 20px;
+            width: 200px;
+        }
+        &__button-wrapper {
+            position: static;
+            flex-basis: 100%;
+        }
+    }
+}

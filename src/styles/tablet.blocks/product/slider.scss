@@ -1,0 +1,8 @@
+﻿@media screen and (max-width: 1200px) and (orientation: portrait) {
+    .slider {
+        min-height: inherit;
+        &__controls {
+            display: none;
+        }
+    }
+}

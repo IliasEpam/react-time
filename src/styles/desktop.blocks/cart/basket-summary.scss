@@ -1,0 +1,36 @@
+﻿.basket-summary {
+    padding-top: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    &__quantity {
+        color: grey;
+        font-size: 80%;
+    }
+    &__splitter {
+        margin: 10px;
+    }
+    &__price {
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: 110%;
+    }
+    &__button {
+        width: 100%;
+        display: inline-block;
+        max-width: 200px;
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action-grad 100%);
+        border: none;
+        border-radius: 20px;
+        color: white;
+        padding: 8px 10px;
+        cursor: pointer;
+        color: white;
+        transition: all .5s;
+        text-decoration: none;
+        font-size: 90%;
+    }
+    &__button:hover {
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action 100%);
+    }
+}

@@ -1,0 +1,21 @@
+﻿@media screen and (max-width: 1200px) {
+    .categories {
+        &__category {
+            width: 200px;
+        }
+        &__img {
+            height: 160px;
+        }
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .categories {
+        &__category {
+            width: 250px;
+        }
+        &__img {
+            height: 200px;
+        }
+    }
+}

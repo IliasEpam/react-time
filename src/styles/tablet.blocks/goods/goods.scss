@@ -1,0 +1,35 @@
+﻿@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .goods {
+        &__navigation-categories {
+            width: 100%;
+            padding-top: 10px;
+        }
+        &__content {
+            width: 100%;
+        }
+        &__good {
+            &--list {
+                width: 80%;
+                max-height: 220px;
+                justify-content: space-between;
+                font-size: 110%;
+            }
+        }
+        &__good-img {
+            &--list {
+                width: 250px;
+                max-height: 200px;
+            }
+        }
+        &__good-info {
+            &--list {
+                width: calc(95% - 250px);
+                height: 200px;
+                display: flex;
+                flex-wrap: wrap;
+                align-content: space-between;
+                text-align: left;
+            }
+        }
+    }
+}

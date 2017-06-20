@@ -1,0 +1,47 @@
+﻿.navigation-categories {
+    line-height: 1.4;
+    &__point {
+        margin-bottom: 10px;
+    }
+    &__link {
+        font-size: 110%;
+        text-decoration: none;
+        color: $color-action;
+        display: flex;
+        align-items: center;
+    }
+    &__img {
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+        display: inline-block;
+        &--dry-food {
+            background: url(img/icons/dry.png);
+            background-size: 100% 100%;
+        }
+        &--wet-food {
+            background: url(img/icons/wet.png);
+            background-size: 100% 100%;
+        }
+        &--medicines {
+            background: url(img/icons/meds.png);
+            background-size: 100% 100%;
+        }
+        &--sleeping-places {
+            background: url(img/icons/sleep.png);
+            background-size: 100% 100%;
+        }
+        &--toys {
+            background: url(img/icons/toys.png);
+            background-size: 100% 100%;
+        }
+        &--brushes {
+            background: url(img/icons/brush.png);
+            background-size: 100% 100%;
+        }
+        &--accessories {
+            background: url(img/icons/acs.png);
+            background-size: 100% 100%;
+        }
+    }
+}

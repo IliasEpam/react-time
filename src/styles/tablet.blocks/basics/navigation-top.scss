@@ -1,0 +1,11 @@
+﻿@media screen and (max-width: 1200px) {
+    .navigation-top {
+        position: static;
+        &__content {
+            width: 90%;
+        }
+    }
+    .navigation-backside {
+        display: none;
+    }
+}

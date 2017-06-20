@@ -1,0 +1,51 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Roboto');
+@import "core/variables.scss";
+@import "core/reset.scss";
+@import "desktop.blocks/main-page/categories.scss";
+@import "desktop.blocks/main-page/main-banner.scss";
+@import "desktop.blocks/main-page/partners.scss";
+@import "desktop.blocks/basics/page.scss";
+@import "desktop.blocks/basics/navigation-top.scss";
+@import "desktop.blocks/basics/scroll-up.scss";
+@import "desktop.blocks/basics/modal-window.scss";
+@import "desktop.blocks/basics/footer-main.scss";
+@import "desktop.blocks/goods/goods.scss";
+@import "desktop.blocks/goods/grid-view.scss";
+@import "desktop.blocks/goods/navigation-categories.scss";
+@import "desktop.blocks/cart/cart.scss";
+@import "desktop.blocks/cart/basket-summary.scss";
+@import "desktop.blocks/contacts/contacts.scss";
+@import "desktop.blocks/payment/payment.scss";
+@import "desktop.blocks/product/product.scss";
+@import "desktop.blocks/product/slider.scss";
+@import "desktop.blocks/product/bread-crumbs.scss";
+
+/**tablet styles**/
+
+@import "tablet.blocks/basics/page.scss";
+@import "tablet.blocks/basics/navigation-top.scss";
+@import "tablet.blocks/basics/footer-main.scss";
+@import "tablet.blocks/main-page/categories.scss";
+@import "tablet.blocks/goods/goods.scss";
+@import "tablet.blocks/goods/navigation-categories.scss";
+@import "tablet.blocks/contacts/contacts.scss";
+@import "tablet.blocks/product/product.scss";
+@import "tablet.blocks/product/slider.scss";
+
+/**mobile styles**/
+
+@import "mobile.blocks/basics/page.scss";
+@import "mobile.blocks/basics/navigation-top.scss";
+@import "mobile.blocks/basics/modal-window.scss";
+@import "mobile.blocks/basics/footer-main.scss";
+@import "mobile.blocks/main-page/categories.scss";
+@import "mobile.blocks/goods/goods.scss";
+@import "mobile.blocks/goods/grid-view.scss";
+@import "mobile.blocks/goods/navigation-categories.scss";
+@import "mobile.blocks/payment/payment.scss";
+@import "mobile.blocks/contacts/contacts.scss";
+@import "mobile.blocks/cart/cart.scss";
+@import "mobile.blocks/cart/basket-summary.scss";
+@import "mobile.blocks/product/product.scss";
+@import "mobile.blocks/product/slider.scss";
+@import "core/base.scss";

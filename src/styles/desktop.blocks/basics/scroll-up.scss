@@ -1,0 +1,22 @@
+﻿.scroll-up {
+    padding: 12.5px;
+    width: 60px;
+    height: 100vh;
+    display: flex;
+    opacity: 0.4;
+    cursor: pointer;
+    text-align: center;
+    transition: all .5s;
+    &__img {
+        align-self: center;
+        width: 35px;
+        height: 35px;
+        background: url(img/icons/scroll-up.png) no-repeat;
+        background-size: 100% 100%;
+    }
+}
+
+.scroll-up:hover {
+    background: rgba(240, 240, 240, 0.4);
+    opacity: 0.9;
+}

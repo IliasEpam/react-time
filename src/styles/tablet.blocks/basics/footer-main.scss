@@ -1,0 +1,16 @@
+﻿@media screen and (max-width: 1200px) {
+    .footer-main {
+        &__content {
+            width: 90%;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: center;
+        }
+        &__section:nth-child(2) {
+            display: none;
+        }
+        &__section:nth-child(3) {
+            display: none;
+        }
+    }
+}

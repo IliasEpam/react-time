@@ -1,0 +1,119 @@
+﻿.modal-window {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    background: rgba(30, 30, 30, 0.5);
+    z-index: 100;
+    transition: all .4s ease-in;
+    &--visible {
+        top: 0;
+    }
+    &__pop-ups {
+        position: fixed;
+        top: -250px;
+        min-height: 200px;
+        padding: 10px 0;
+        width: 400px;
+        left: calc(50% - 150px);
+        z-index: 101;
+        background: white;
+        display: table;
+        transition: all .4s ease-in;
+        &--visible {
+            top: calc(50% - 100px);
+        }
+    }
+    &__line {
+        width: 300px;
+        margin: 0px auto;
+        padding-bottom: 10px;
+        &--text-right {
+            text-align: right;
+        }
+    }
+    &__line:last-child {
+        padding: 0;
+    }
+    &__form {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    &__input-email {
+        width: 100%;
+    }
+    &__input-password {
+        width: 100%;
+    }
+    &__button {
+        width: 100%;
+        background: $color-action;
+        background-image: linear-gradient(to bottom, $color-action 0, $color-action-grad 100%);
+        border-radius: 20px;
+        border: none;
+        padding: 3px 0;
+        cursor: pointer;
+        color: white;
+        transition: all .5s;
+    }
+    &__button:hover {
+        background: $color-action;
+    }
+    &__close {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 0;
+        top: 1px;
+        cursor: pointer;
+        background: url(img/icons/close.jpg);
+        z-index: 102;
+        background-size: 100% 100%;
+    }
+    &__social-icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 20px;
+        align-self: center;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: all .5s;
+        &--facebook {
+            background: url(img/icons/facebook.png);
+            background-size: 100% 100%;
+        }
+        &--twitter {
+            background: url(img/icons/twit.png);
+            background-size: 100% 100%;
+        }
+        &--google {
+            background: url(img/icons/google.png);
+            background-size: 100% 100%;
+        }
+        &--vk {
+            background: url(img/icons/vk.png);
+            background-size: 100% 100%;
+        }
+    }
+    &__social-icon:hover {
+        opacity: 1.0;
+    }
+    &__sign-link {
+        font-size: 80%;
+        color: blue;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__reg-link {
+        font-size: 80%;
+        color: blue;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

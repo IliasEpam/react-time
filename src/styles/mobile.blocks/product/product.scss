@@ -1,0 +1,12 @@
+﻿@media screen and (max-width: 760px) {
+    .product {
+        flex-wrap: wrap;
+        &__slider {
+            flex-basis: 100%;
+        }
+        &__about {
+            padding-top: 20px;
+            flex-basis: 100%;
+        }
+    }
+}
