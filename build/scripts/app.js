@@ -26084,8 +26084,21 @@ var MainPage = exports.MainPage = function (_React$Component) {
             });
         }
     }, {
+        key: 'getToken',
+        value: function getToken() {
+            var hash = location.hash;
+            if (hash) {
+                var firstChar = hash.indexOf('=') + 1;
+                var lastChar = hash.indexOf('&');
+                var token = hash.slice(firstChar, lastChar);
+                localStorage.setItem('cat-shop-token', token);
+                window.location = _utils.basicURI;
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
+            this.getToken();
             return _react2.default.createElement(
                 'div',
                 null,

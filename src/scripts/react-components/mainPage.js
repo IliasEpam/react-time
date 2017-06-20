@@ -70,7 +70,18 @@ export class MainPage extends React.Component {
             })
         
     }
+    getToken() {
+        var hash = location.hash;
+        if (hash){
+            var firstChar = hash.indexOf('=') + 1;
+            var lastChar = hash.indexOf('&');
+            var token = hash.slice(firstChar, lastChar);
+            localStorage.setItem('cat-shop-token', token);
+            window.location = basicURI;
+        }
+    }
   render() {
+    this.getToken();
     return (
         <div>
             <div className="page__main-banner">
