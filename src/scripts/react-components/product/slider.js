@@ -14,7 +14,6 @@ export class Slider extends React.Component{
         var imgs = [];
         var img = '';
         for (var i = 0; i < data.imgs.length; i++){
-            console.log(data.imgs[i]);
             if (i === 0){
                 img =  <img className="slider__shown-img" src={basicURI + '/' + data.imgs[i].imgPath} id="big-img" onClick={this.carouselSetNextImg} key={i} />;
                 imgs.push(
@@ -31,6 +30,9 @@ export class Slider extends React.Component{
         this.setState({img:img});
     });
   }
+    componentWillReceiveProps(newProps){
+        this.componentDidMount();
+    } 
   getData(){
       return fetch(basicURI + '/products/' + this.props.path)
         .then((result) => {

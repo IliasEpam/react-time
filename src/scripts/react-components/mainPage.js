@@ -17,7 +17,7 @@ export class MainPage extends React.Component {
                 categories.push(
                 <div className="categories__category" key={data[i].id}>
                     <Link className="categories__link" to={'/category/' + data[i].id}>
-                        <img className="categories__img" src={data[i].img} alt={data[i].title} />
+                        <img className="categories__img" src={basicURI + '/' + data[i].img} alt={data[i].title} />
                         <div className="categories__description">{data[i].title} (<span className="categories__products-amount"> </span>)</div>
                     </Link>
                 </div>
@@ -81,6 +81,7 @@ export class MainPage extends React.Component {
         }
     }
   render() {
+    this.changePageTitle();
     this.getToken();
     return (
         <div>
@@ -106,10 +107,10 @@ export class MainPage extends React.Component {
             <div className="page__partners">
             <div className="partners">
                 <div className="partners__content">
-                     <img className="partners__logo" alt="partner" src="img/partners/wwf.png" />
-                     <img className="partners__logo" alt="partner" src="img/partners/green.png" />
-                     <img className="partners__logo" alt="partner" src="img/partners/royal.png" />
-                     <img className="partners__logo" alt="partner" src="img/partners/wwf.png" />
+                     <img className="partners__logo" alt="partner" src={basicURI + '/' + "img/partners/wwf.png"} />
+                     <img className="partners__logo" alt="partner" src={basicURI + '/' + "img/partners/green.png"} />
+                     <img className="partners__logo" alt="partner" src={basicURI + '/' + "img/partners/royal.png"} />
+                     <img className="partners__logo" alt="partner" src={basicURI + '/' + "img/partners/wwf.png"} />
                 </div>
             </div>
             </div>

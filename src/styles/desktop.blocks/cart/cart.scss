@@ -3,11 +3,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 20px;
     &__basket-summary {
         order: 2;
     }
     &__content {
         flex-basis: calc(95% - 140px);
+        padding-top: 20px;
     }
     &__header {
         padding-top: 10px;
@@ -21,7 +23,7 @@
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin: 20px 0;
+        margin-bottom: 20px;
         padding: 20px;
         border: 1px solid $color-main;
         border-radius: 5px;

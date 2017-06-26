@@ -47,12 +47,16 @@
         width: 100%;
     }
     &__button {
+        display: inline-block;
         width: 100%;
         background: $color-action;
         background-image: linear-gradient(to bottom, $color-action 0, $color-action-grad 100%);
         border-radius: 20px;
         border: none;
-        padding: 3px 0;
+        padding: 5px 0;
+        text-align: center;
+        text-decoration: none;
+        font-size: 90%;
         cursor: pointer;
         color: white;
         transition: all .5s;

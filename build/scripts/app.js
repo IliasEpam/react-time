@@ -24857,13 +24857,106 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CartPage = exports.CartPage = function (_React$Component) {
     _inherits(CartPage, _React$Component);
 
-    function CartPage() {
+    function CartPage(props) {
         _classCallCheck(this, CartPage);
 
-        return _possibleConstructorReturn(this, (CartPage.__proto__ || Object.getPrototypeOf(CartPage)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (CartPage.__proto__ || Object.getPrototypeOf(CartPage)).call(this, props));
+
+        _this.state = { products: [], totalPrice: 0, totalQuantity: 0 };
+        return _this;
     }
 
     _createClass(CartPage, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var products = [];
+            var totalPrice = 0;
+            var totalQuantity = 0;
+            var data = JSON.parse(localStorage.getItem('cat-shop-cart'));
+            for (var prop in data) {
+                products.push(_react2.default.createElement(
+                    'div',
+                    { className: 'cart__product', 'data-id': prop, key: prop },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'cart__img-container' },
+                        _react2.default.createElement('img', { src: _utils.basicURI + '/' + data[prop].img, className: 'cart__img', alt: 'good' })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'cart__name' },
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: "/product/" + prop },
+                            data[prop].title
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'cart__quantity' },
+                        'Quantity ',
+                        _react2.default.createElement('input', { className: 'cart__quantity-input', type: 'number', min: '1', value: data[prop].quantity, onChange: this.onQuantityChange.bind(this) })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'cart__info' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'cart__price' },
+                            '$ ',
+                            data[prop].price
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'cart__remove' },
+                            _react2.default.createElement(
+                                'a',
+                                { className: 'cart__remove-button', onClick: this.removeProductFromCart.bind(this), href: '#' },
+                                'Remove'
+                            )
+                        )
+                    )
+                ));
+                totalPrice += Number(data[prop].price) * Number(data[prop].quantity);
+                totalQuantity += Number(data[prop].quantity);
+            };
+            var b = 0;
+            for (var key in data) {
+                b++;
+            }
+            if (!data || !b) {
+                products.push('There is no products in your cart. Go and get some cool stuff');
+            }
+            this.setState({ products: products });
+            this.setState({ totalPrice: totalPrice });
+            this.setState({ totalQuantity: totalQuantity });
+        }
+    }, {
+        key: 'onQuantityChange',
+        value: function onQuantityChange(e) {
+            var target = e.target;
+            var parent = target.parentNode.parentNode;
+            var idOfProductToChange = parent.getAttribute('data-id');
+            var newQuantity = parent.querySelector('.cart__quantity-input').value;
+            var dataFromLocalStorage = JSON.parse(localStorage.getItem('cat-shop-cart'));
+            dataFromLocalStorage[idOfProductToChange].quantity = newQuantity;
+            localStorage.setItem('cat-shop-cart', JSON.stringify(dataFromLocalStorage));
+            this.componentDidMount();
+        }
+    }, {
+        key: 'removeProductFromCart',
+        value: function removeProductFromCart(e) {
+            var target = e.target;
+            var parent = target.parentNode.parentNode.parentNode;
+            console.log(parent);
+            var idOfProductToRemove = parent.getAttribute('data-id');
+            var dataFromLocalStorage = JSON.parse(localStorage.getItem('cat-shop-cart'));
+            delete dataFromLocalStorage[idOfProductToRemove];
+            console.log(dataFromLocalStorage);
+            localStorage.setItem('cat-shop-cart', JSON.stringify(dataFromLocalStorage));
+            this.componentDidMount();
+        }
+    }, {
         key: 'changePageTitle',
         value: function changePageTitle() {
             document.title = 'Cart – Cat Shop';
@@ -24900,7 +24993,7 @@ var CartPage = exports.CartPage = function (_React$Component) {
                                 _react2.default.createElement(
                                     'span',
                                     { className: 'total-quantity' },
-                                    '2'
+                                    this.state.totalQuantity
                                 ),
                                 ' item(s)'
                             ),
@@ -24912,12 +25005,12 @@ var CartPage = exports.CartPage = function (_React$Component) {
                                 _react2.default.createElement(
                                     'span',
                                     { className: 'total-price', id: 'total-price' },
-                                    '20'
+                                    this.state.totalPrice
                                 )
                             ),
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
-                                { type: 'submit', className: 'basket-summary__button', to: '/contacts\'' },
+                                { type: 'submit', className: 'basket-summary__button', to: '/contacts' },
                                 'Proceed to chekout'
                             )
                         )
@@ -24925,88 +25018,7 @@ var CartPage = exports.CartPage = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'cart__content' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'cart__product' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__img-container' },
-                                _react2.default.createElement('img', { src: 'img/logo.jpg', className: 'cart__img', alt: 'good' })
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__name' },
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '#' },
-                                    'Dry food \u2013 "Brand"(2kg)'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__quantity' },
-                                _react2.default.createElement('input', { className: 'cart__quantity-input', type: 'number', min: '1' })
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__info' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'cart__price' },
-                                    '$ 5'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'cart__remove' },
-                                    _react2.default.createElement(
-                                        'a',
-                                        { className: 'cart__remove-button', href: '#' },
-                                        'Remove'
-                                    )
-                                )
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'cart__product' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__img-container' },
-                                _react2.default.createElement('img', { src: 'img/logo.jpg', className: 'cart__img', alt: 'good' })
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__name' },
-                                _react2.default.createElement(
-                                    'a',
-                                    { href: '#' },
-                                    'Dry food \u2013 "Brand"(2kg)'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__quantity' },
-                                _react2.default.createElement('input', { className: 'cart__quantity-input', type: 'number', min: '1' })
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'cart__info' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'cart__price' },
-                                    '$ 5'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'cart__remove' },
-                                    _react2.default.createElement(
-                                        'a',
-                                        { className: 'cart__remove-button', href: '#' },
-                                        'Remove'
-                                    )
-                                )
-                            )
-                        ),
+                        this.state.products,
                         _react2.default.createElement(
                             'div',
                             { className: 'cart__summary-bottom' },
@@ -25017,7 +25029,7 @@ var CartPage = exports.CartPage = function (_React$Component) {
                                 _react2.default.createElement(
                                     'span',
                                     null,
-                                    '10'
+                                    this.state.totalPrice
                                 )
                             ),
                             _react2.default.createElement(
@@ -25114,8 +25126,8 @@ var CategoryPage = exports.CategoryPage = function (_React$Component) {
                     };
                     products.push(_react2.default.createElement(
                         'div',
-                        { className: 'goods__good', key: data[i].id },
-                        _react2.default.createElement('img', { className: 'goods__good-img', src: _utils.basicURI + '/' + data[i].img, alt: '' }),
+                        { className: 'goods__good', key: data[i].id, 'data-id': data[i].id, 'data-img': data[i].imgs[0].imgPath },
+                        _react2.default.createElement('img', { className: 'goods__good-img', src: _utils.basicURI + '/' + data[i].imgs[0].imgPath, alt: '' }),
                         _react2.default.createElement(
                             'div',
                             { className: 'goods__good-info' },
@@ -25131,7 +25143,11 @@ var CategoryPage = exports.CategoryPage = function (_React$Component) {
                             _react2.default.createElement(
                                 'div',
                                 { className: 'goods__good-price' },
-                                data[i].price,
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'goods__good-price--js' },
+                                    data[i].price
+                                ),
                                 ' $'
                             ),
                             _react2.default.createElement(
@@ -25144,7 +25160,7 @@ var CategoryPage = exports.CategoryPage = function (_React$Component) {
                                 { className: 'goods__good-description' },
                                 _react2.default.createElement(
                                     'span',
-                                    { className: 'goods__good-add-cart' },
+                                    { className: 'goods__good-add-cart', onClick: _this2.addToCart },
                                     'Add to cart'
                                 )
                             )
@@ -25190,6 +25206,25 @@ var CategoryPage = exports.CategoryPage = function (_React$Component) {
             (0, _utils.manipulateClasses)('.goods__good-name', 'goods__good-name--list', 'remove');
             (0, _utils.manipulateClasses)('.grid-view', 'grid-view--visible', 'remove');
             (0, _utils.manipulateClasses)('.list-view', 'list-view--visible', 'add');
+        }
+    }, {
+        key: 'addToCart',
+        value: function addToCart(e) {
+            var cart = JSON.parse(localStorage.getItem('cat-shop-cart')) || {};
+            var target = e.target;
+            var parentEl = target.parentNode.parentNode.parentNode;
+            var cartItem = {};
+            var key = parentEl.getAttribute('data-id');
+            cartItem.title = parentEl.querySelector('.goods__good-link').innerHTML;
+            cartItem.price = parentEl.querySelector('.goods__good-price--js').innerHTML;
+            cartItem.quantity = Number(1);
+            cartItem.img = parentEl.getAttribute('data-img');
+            if (cart[key]) {
+                cartItem.quantity += Number(cart[key].quantity);
+            }
+            cart[key] = cartItem;
+            localStorage.setItem('cat-shop-cart', JSON.stringify(cart));
+            alert('product was added to your cart');
         }
     }, {
         key: 'render',
@@ -25488,40 +25523,148 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Header = exports.Header = function (_React$Component) {
     _inherits(Header, _React$Component);
 
-    function Header() {
+    function Header(props) {
         _classCallCheck(this, Header);
 
-        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+        _this.state = { products: [], wantedProducts: [], helloMessage: '', sid: '' };
+        return _this;
     }
 
     _createClass(Header, [{
         key: 'showPopUp',
         value: function showPopUp() {
             localStorage.removeItem('cat-shop-token');
+            fetch(_utils.basicURI + '/users/logout', {
+                method: 'POST'
+            });
+            this.setState({ helloMessage: '' });
             (0, _utils.manipulateClasses)('.modal-window', 'modal-window--visible', 'add');
             (0, _utils.manipulateClasses)('#sign-window', 'modal-window__pop-ups--visible', 'add');
         }
     }, {
         key: 'sayHi',
         value: function sayHi() {
-            var el = document.getElementById('userName');
+            var _this2 = this;
+
             if (localStorage.getItem('cat-shop-token')) {
-                corsApiVkRequest().then(function (result) {
+                (0, _utils.corsApiVkRequest)().then(function (result) {
                     return result.response[0].first_name;
                 }).then(function (name) {
-                    return 'Hi ' + name;
+                    console.log(name);return 'Hi ' + name;
                 }).then(function (phrase) {
-                    el.innerHTML = phrase;
+                    _this2.setState({ helloMessage: phrase });
                 }).catch(function (err) {
                     return console.log(err);
                 });
-            } else {
-                el.innerHTML = '';
             }
+            /* else {
+                 fetch(basicURI + '/users/me')
+                 .then((result)=>{console.log(result); console.log(result.json())})
+                 .then((user)=>{
+                     console.log(user);
+                     this.setState({helloMessage: 'Hi ' + user.username });
+                 })
+             }*/
+        }
+    }, {
+        key: 'searchProduct',
+        value: function searchProduct() {
+            var _this3 = this;
+
+            if (!this.state.products.length) {
+                fetch(_utils.basicURI + '/products').then(function (result) {
+                    return result.json();
+                }).then(function (data) {
+                    _this3.setState({ products: data });
+                    var productList = [];
+                    var value = document.getElementById('product-search').value;
+                    value = value.toLowerCase();
+                    for (var i = 0; i < data.length; i++) {
+                        var productTitle = data[i].title.toLowerCase();
+                        if (productTitle.indexOf(value) + 1) {
+                            productList.push(data[i]);
+                        }
+                    }
+                    _this3.renderSearchResults(productList);
+                });
+            } else {
+                var productList = [];
+                var value = document.getElementById('product-search').value;
+                value = value.toLowerCase();
+                for (var i = 0; i < this.state.products.length; i++) {
+                    var productTitle = this.state.products[i].title.toLowerCase();
+                    if (productTitle.indexOf(value) + 1) {
+                        productList.push(this.state.products[i]);
+                    }
+                }
+                this.renderSearchResults(productList);
+            }
+        }
+    }, {
+        key: 'renderSearchResults',
+        value: function renderSearchResults(data) {
+            var productsToRender = [];
+            if (data.length) {
+                (0, _utils.manipulateClasses)('.navigation-top__search-result', 'navigation-top__search-result--visible', 'add');
+                var cycleTimes = data.length;
+                if (data.length > 5) {
+                    cycleTimes = 5;
+                }
+                for (var i = 0; i < cycleTimes; i++) {
+                    productsToRender.push(_react2.default.createElement(
+                        'div',
+                        { className: 'navigation-top__search-result-item', key: data[i].id },
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { className: 'navigation-top__search-result-link', to: '/product/' + data[i].id },
+                            _react2.default.createElement('img', { className: 'navigation-top__search-result-img', src: _utils.basicURI + '/' + data[i].imgs[0].imgPath, alt: data[i].title }),
+                            data[i].title
+                        )
+                    ));
+                }
+                if (data.length > 5) {
+                    productsToRender.push(_react2.default.createElement(
+                        'div',
+                        { className: 'navigation-top__search-result-item navigation-top__search-result-item--text-center', key: 6 },
+                        '...'
+                    ));
+                }
+                this.setState({ wantedProducts: productsToRender });
+            } else {
+                productsToRender.push(_react2.default.createElement(
+                    'div',
+                    { className: 'navigation-top__search-result-item navigation-top__search-result-item--text-center', key: 1 },
+                    'There is no products to display'
+                ));
+                this.setState({ wantedProducts: productsToRender });
+            }
+        }
+    }, {
+        key: 'onFocusSearchInput',
+        value: function onFocusSearchInput() {
+            var value = document.getElementById('product-search').value;
+            if (value) {
+                (0, _utils.manipulateClasses)('.navigation-top__search-result', 'navigation-top__search-result--visible', 'add');
+            }
+        }
+    }, {
+        key: 'hideSearchResults',
+        value: function hideSearchResults(e) {
+            if (!e.target.classList.contains('navigation-top__search-input')) {
+                (0, _utils.manipulateClasses)('.navigation-top__search-result', 'navigation-top__search-result--visible', 'remove');
+            }
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.sayHi();
         }
     }, {
         key: 'render',
         value: function render() {
+            document.addEventListener('click', this.hideSearchResults);
             return _react2.default.createElement(
                 'header',
                 { className: 'page__navigation-top' },
@@ -25543,12 +25686,27 @@ var Header = exports.Header = function (_React$Component) {
                             _react2.default.createElement(
                                 'label',
                                 { className: 'navigation-top__search' },
-                                _react2.default.createElement('input', { type: 'search', placeholder: 'Search...' }),
-                                _react2.default.createElement('img', { className: 'navigation-top__search-img', src: 'img/icons/search.png' })
+                                _react2.default.createElement('input', {
+                                    className: 'navigation-top__search-input',
+                                    type: 'text',
+                                    placeholder: 'Search...',
+                                    id: 'product-search',
+                                    onChange: this.searchProduct.bind(this),
+                                    onFocus: this.onFocusSearchInput.bind(this) }),
+                                _react2.default.createElement('img', { className: 'navigation-top__search-img', src: 'img/icons/search.png' }),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'navigation-top__search-result', id: 'search-result' },
+                                    this.state.wantedProducts
+                                )
                             ),
                             _react2.default.createElement(_reactRouterDom.Link, { className: 'navigation-top__icon navigation-top__icon--cart', to: '/cart' }),
-                            _react2.default.createElement('a', { className: 'navigation-top__icon navigation-top__icon--profile', onClick: this.showPopUp }),
-                            _react2.default.createElement('span', { id: 'userName' })
+                            _react2.default.createElement('a', { className: 'navigation-top__icon navigation-top__icon--profile', onClick: this.showPopUp.bind(this) }),
+                            _react2.default.createElement(
+                                'span',
+                                { id: 'userName' },
+                                this.state.helloMessage
+                            )
                         )
                     )
                 )
@@ -25612,6 +25770,56 @@ var ModalWindows = exports.ModalWindows = function (_React$Component) {
             }
         }
     }, {
+        key: 'loginUser',
+        value: function loginUser() {
+            var userData = {};
+            userData.username = document.querySelectorAll('.modal-window__input-email')[1].value;
+            userData.password = document.querySelectorAll('.modal-window__input-password')[1].value;
+            fetch(_utils.basicURI + '/users/login', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            }).then(function (result) {
+                if (result.status == 200) {
+                    alert('You have successfully loged in');
+                    (0, _utils.manipulateClasses)('.modal-window', 'modal-window--visible', 'remove');
+                    (0, _utils.manipulateClasses)('#reg-window', 'modal-window__pop-ups--visible', 'remove');
+                    (0, _utils.manipulateClasses)('#sign-window', 'modal-window__pop-ups--visible', 'remove');
+                    console.log(result);
+                } else {
+                    alert('You have entered wrong information. Please check and try again.');
+                }
+            });
+        }
+    }, {
+        key: 'registerUser',
+        value: function registerUser() {
+            var userData = {};
+            userData.username = document.querySelectorAll('.modal-window__input-email')[0].value;
+            userData.password = document.querySelectorAll('.modal-window__input-password')[0].value;
+            if (userData.username.search(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+/) + 1 && userData.password) {
+                fetch(_utils.basicURI + '/users', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                }).then(function (result) {
+                    if (result.status == 200) {
+                        alert('You have successfully registered. Now you can log in.');
+                    } else {
+                        alert('There are some problems on the server. Please try again later.');
+                    }
+                });
+            } else {
+                alert('You have entered wrong information. Please check and try again.');
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             (0, _utils.delegateEvent)(document, 'click', '.modal-window', this.controlWindows);
@@ -25647,8 +25855,8 @@ var ModalWindows = exports.ModalWindows = function (_React$Component) {
                                 'div',
                                 { className: 'modal-window__line' },
                                 _react2.default.createElement(
-                                    'button',
-                                    { className: 'modal-window__button', type: 'submit' },
+                                    'a',
+                                    { className: 'modal-window__button', onClick: this.registerUser },
                                     'Register'
                                 )
                             ),
@@ -25673,12 +25881,12 @@ var ModalWindows = exports.ModalWindows = function (_React$Component) {
                             _react2.default.createElement(
                                 'div',
                                 { className: 'modal-window__line' },
-                                'Please Sign In'
+                                'Please Log In'
                             ),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'modal-window__line' },
-                                _react2.default.createElement('input', { className: 'modal-window__input-email', pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2}', name: 'email', type: 'email', required: true, placeholder: 'Email adress' })
+                                _react2.default.createElement('input', { className: 'modal-window__input-email', name: 'email', required: true, placeholder: 'Email adress' })
                             ),
                             _react2.default.createElement(
                                 'div',
@@ -25704,9 +25912,9 @@ var ModalWindows = exports.ModalWindows = function (_React$Component) {
                                 'div',
                                 { className: 'modal-window__line' },
                                 _react2.default.createElement(
-                                    'button',
-                                    { className: 'modal-window__button', type: 'submit' },
-                                    'Sign In'
+                                    'a',
+                                    { className: 'modal-window__button', onClick: this.loginUser },
+                                    'Log In'
                                 )
                             ),
                             _react2.default.createElement(
@@ -26021,7 +26229,7 @@ var MainPage = exports.MainPage = function (_React$Component) {
                         _react2.default.createElement(
                             _reactRouterDom.Link,
                             { className: 'categories__link', to: '/category/' + data[i].id },
-                            _react2.default.createElement('img', { className: 'categories__img', src: data[i].img, alt: data[i].title }),
+                            _react2.default.createElement('img', { className: 'categories__img', src: _utils.basicURI + '/' + data[i].img, alt: data[i].title }),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'categories__description' },
@@ -26098,6 +26306,7 @@ var MainPage = exports.MainPage = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            this.changePageTitle();
             this.getToken();
             return _react2.default.createElement(
                 'div',
@@ -26160,10 +26369,10 @@ var MainPage = exports.MainPage = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'partners__content' },
-                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: 'img/partners/wwf.png' }),
-                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: 'img/partners/green.png' }),
-                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: 'img/partners/royal.png' }),
-                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: 'img/partners/wwf.png' })
+                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: _utils.basicURI + '/' + "img/partners/wwf.png" }),
+                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: _utils.basicURI + '/' + "img/partners/green.png" }),
+                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: _utils.basicURI + '/' + "img/partners/royal.png" }),
+                            _react2.default.createElement('img', { className: 'partners__logo', alt: 'partner', src: _utils.basicURI + '/' + "img/partners/wwf.png" })
                         )
                     )
                 )
@@ -26309,7 +26518,7 @@ var ProductPage = exports.ProductPage = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (ProductPage.__proto__ || Object.getPrototypeOf(ProductPage)).call(this, props));
 
-        _this.state = { title: '', description: '', price: '' };
+        _this.state = { title: '', description: '', price: '', id: '', imgs: [{ imgPath: '' }] };
         return _this;
     }
 
@@ -26335,13 +26544,43 @@ var ProductPage = exports.ProductPage = function (_React$Component) {
                 _this2.setState({ title: data.title });
                 _this2.setState({ description: data.description });
                 _this2.setState({ price: data.price });
+                _this2.setState({ id: data.id });
+                _this2.setState({ imgs: data.imgs });
                 _this2.changePageTitle(data.title);
             });
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(newProps) {
+            this.updateComponent(newProps.match.params.productId);
         }
     }, {
         key: 'changePageTitle',
         value: function changePageTitle(title) {
             document.title = title;
+        }
+    }, {
+        key: 'addToCart',
+        value: function addToCart(e) {
+            var cart = JSON.parse(localStorage.getItem('cat-shop-cart')) || {};
+            var target = e.target;
+            var parentEl = target.parentNode.parentNode;
+            console.log(parentEl);
+            var cartItem = {};
+            var key = parentEl.getAttribute('data-id');
+            cartItem.title = parentEl.querySelector('.product__name').innerHTML;
+            cartItem.price = parentEl.querySelector('#product-price').innerHTML;
+            cartItem.quantity = Number(parentEl.querySelector('.product__quantity-input').value);
+            cartItem.img = parentEl.getAttribute('data-img');
+            console.log(cartItem.quantity + 1);
+            if (cart[key]) {
+                cartItem.quantity += Number(cart[key].quantity);
+            }
+            cart[key] = cartItem;
+            localStorage.setItem('cat-shop-cart', JSON.stringify(cart));
+            console.log(JSON.parse(localStorage.getItem('cat-shop-cart')));
+            console.log(Number(cart[key].quantity) + 1);
+            alert('product was added to your cart');
         }
     }, {
         key: 'render',
@@ -26359,7 +26598,7 @@ var ProductPage = exports.ProductPage = function (_React$Component) {
                         _react2.default.createElement(_slider.Slider, { path: this.props.match.params.productId }),
                         _react2.default.createElement(
                             'section',
-                            { className: 'product__about' },
+                            { className: 'product__about', 'data-id': this.state.id, 'data-img': this.state.imgs[0].imgPath },
                             _react2.default.createElement(
                                 'h1',
                                 { className: 'product__name' },
@@ -26374,7 +26613,11 @@ var ProductPage = exports.ProductPage = function (_React$Component) {
                                 'div',
                                 { className: 'product__price' },
                                 'Price: $',
-                                this.state.price
+                                _react2.default.createElement(
+                                    'span',
+                                    { id: 'product-price' },
+                                    this.state.price
+                                )
                             ),
                             _react2.default.createElement(
                                 'div',
@@ -26385,11 +26628,11 @@ var ProductPage = exports.ProductPage = function (_React$Component) {
                                     'Quantity:',
                                     _react2.default.createElement('br', null),
                                     ' ',
-                                    _react2.default.createElement('input', { type: 'number', min: '1', value: '1' })
+                                    _react2.default.createElement('input', { className: 'product__quantity-input', type: 'number', min: '1', placeholder: '1' })
                                 ),
                                 _react2.default.createElement(
                                     'button',
-                                    { className: 'product__add-to-cart', type: 'submit' },
+                                    { className: 'product__add-to-cart', type: 'submit', onClick: this.addToCart },
                                     ' Add to cart'
                                 )
                             ),
@@ -26533,7 +26776,6 @@ var Slider = exports.Slider = function (_React$Component) {
                 var imgs = [];
                 var img = '';
                 for (var i = 0; i < data.imgs.length; i++) {
-                    console.log(data.imgs[i]);
                     if (i === 0) {
                         img = _react2.default.createElement('img', { className: 'slider__shown-img', src: _utils.basicURI + '/' + data.imgs[i].imgPath, id: 'big-img', onClick: _this2.carouselSetNextImg, key: i });
                         imgs.push(_react2.default.createElement('img', { className: 'slider__source-img slider__source-img--active', onClick: _this2.carouselSetTargetImg, src: _utils.basicURI + '/' + data.imgs[i].imgPath, key: i + 100 }));
@@ -26544,6 +26786,11 @@ var Slider = exports.Slider = function (_React$Component) {
                 _this2.setState({ imgs: imgs });
                 _this2.setState({ img: img });
             });
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(newProps) {
+            this.componentDidMount();
         }
     }, {
         key: 'getData',

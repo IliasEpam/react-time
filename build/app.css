@@ -524,6 +524,65 @@ table {
   align-items: center;
 }
 
+.navigation-top__search {
+  position: relative;
+}
+
+.navigation-top__search-input {
+  width: 200px;
+}
+
+.navigation-top__search-result {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 200px;
+  min-height: 40px;
+  z-index: 1000;
+  background: white;
+  font-size: 85%;
+  border: 1px solid #5bceaf;
+  line-height: 1.1;
+}
+
+.navigation-top__search-result--visible {
+  display: inline-block;
+}
+
+.navigation-top__search-result-item {
+  overflow: hidden;
+  max-height: 50px;
+  padding: 5px 3px;
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  vertical-align: middle;
+}
+
+.navigation-top__search-result-item--text-center {
+  text-align: center;
+}
+
+.navigation-top__search-result-item:hover {
+  background: #5bceaf;
+}
+
+.navigation-top__search-result-img {
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin-right: 3px;
+}
+
+.navigation-top__search-result-link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: black;
+}
+
 .navigation-top__icon {
   margin-left: 10px;
   width: 40px;
@@ -637,6 +696,7 @@ table {
 }
 
 .modal-window__button {
+  display: inline-block;
   width: 100%;
   background: #c55f4b;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #c55f4b), to(#922b28));
@@ -645,7 +705,10 @@ table {
   -webkit-border-radius: 20px;
   border-radius: 20px;
   border: none;
-  padding: 3px 0;
+  padding: 5px 0;
+  text-align: center;
+  text-decoration: none;
+  font-size: 90%;
   cursor: pointer;
   color: white;
   -webkit-transition: all .5s;
@@ -1066,6 +1129,7 @@ table {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .cart__basket-summary {
@@ -1079,6 +1143,7 @@ table {
   -webkit-flex-basis: -webkit-calc(95% - 140px);
   -ms-flex-preferred-size: calc(95% - 140px);
   flex-basis: calc(95% - 140px);
+  padding-top: 20px;
 }
 
 .cart__header {
@@ -1104,7 +1169,7 @@ table {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin: 20px 0;
+  margin-bottom: 20px;
   padding: 20px;
   border: 1px solid #5bceaf;
   -webkit-border-radius: 5px;
